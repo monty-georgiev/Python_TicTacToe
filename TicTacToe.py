@@ -2,23 +2,25 @@
 
 board = [' ']*10
 player_turn = 'Player 1'
+player_one_turn = True
+winner = False
 
 
 def user_input():
     # ask for user input
   
     global player_turn
-    player_position = input(player_turn + 'choose position (1-9):')
-
-  
-
+    global player_one_turn
+    player_position = input(player_turn + ' choose position (1-9):')
     place_mark_on_board(player_turn, player_position)
+  
   # change players on input
-    if player_turn == 'Player 1':
+    if player_one_turn:
         player_turn = 'Player 2'
+        player_one_turn = False
     else:
         player_turn = 'Player 1'
-
+        player_one_turn = True        
 
 def draw_board():
     global board
@@ -38,9 +40,16 @@ def place_mark_on_board(player_turn, player_position):
     # if not -> return error
     # update state of board
     print '{} placed mark on position: {}'.format(player_turn, player_position)
+    marker = 'X'
     global board
-    board[player_position] = 'M'
+    global player_one_turn
+
+    if not player_one_turn:
+        marker = 'O'
+        
+    board[player_position] = marker
     draw_board()
 
 
-user_input()
+for i in range(3):
+    user_input()

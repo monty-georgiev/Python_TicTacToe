@@ -13,7 +13,7 @@ def user_input():
     player_position = input(player_turn + ' choose position (1-9):')
     place_mark_on_board(player_turn, player_position)
 
-  # change players on input
+     # change players on input
     if player_one_turn:
         player_turn = 'Player 2'
         player_one_turn = False
@@ -24,13 +24,16 @@ def user_input():
 def draw_board():
     global board
  
-    print '---|---|---'
-    print ' {} | {} | {} '.format(board[1], board[2], board[3])
-    print '---|---|---'
-    print ' {} | {} | {} '.format(board[4], board[5], board[6])
-    print '---|---|---'
-    print ' {} | {} | {} '.format(board[7], board[8], board[9])
-    print '---|---|---'
+    print ' ___.___.___'
+    print '|   |   |   |'    
+    print '| {} | {} | {} |'.format(board[1], board[2], board[3])
+    print '|___|___|___|'
+    print '|   |   |   |'    
+    print '| {} | {} | {} |'.format(board[4], board[5], board[6])
+    print '|___|___|___|'
+    print '|   |   |   |'    
+    print '| {} | {} | {} |'.format(board[7], board[8], board[9])
+    print '|___|___|___|'
 
 
 def place_mark_on_board(player_turn, player_position):
@@ -42,7 +45,11 @@ def place_mark_on_board(player_turn, player_position):
     if not player_one_turn:
         marker = 'O'
 
-    board[player_position] = marker
+    if board[player_position] is ' ':
+        board[player_position] = marker
+    else:
+        print 'Position already taken!'
+
     draw_board()
     check_for_winner(player_turn, marker)
 

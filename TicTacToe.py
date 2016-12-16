@@ -1,8 +1,5 @@
 
-board = [' '] * 10
-player_turn = 'Player 1'
-player_one_turn = True
-winner = False
+
 
 def user_input(board):
     # ask for user input
@@ -75,8 +72,18 @@ def check_for_winner(board, player_turn, marker):
         winner = True
         print '{} is the winner'.format(player_turn)
 
-while not winner and not check_if_board_full(board):
-    user_input(board)
-else:
+while True:
+    
+    board = [' '] * 10
+    player_turn = 'Player 1'
+    player_one_turn = True
+    winner = False
+
+    while not winner and not check_if_board_full(board):
+        user_input(board)
+    else:
      print 'Game Over!'
+     break
+
+
     

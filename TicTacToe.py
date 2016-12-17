@@ -1,6 +1,3 @@
-
-
-
 def user_input(board):
     # ask for user input
 

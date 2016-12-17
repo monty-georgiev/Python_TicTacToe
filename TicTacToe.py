@@ -1,11 +1,10 @@
 def user_input(board):
     # ask for user input
 
-   
     global player_turn
     global player_one_turn
     player_position = input(player_turn + ' choose position (1-9):')
-    place_mark_on_board(board,player_turn, player_position)
+    place_mark_on_board(board, player_turn, player_position)
 
     if player_one_turn:
         player_turn = 'Player 2'
@@ -14,27 +13,28 @@ def user_input(board):
         player_turn = 'Player 1'
         player_one_turn = True
 
+
 def draw_board(board):
- 
     print(chr(27) + "[2J")
 
     print ' ___.___.___'
-    print '|   |   |   |'    
+    print '|   |   |   |'
     print '| {} | {} | {} |'.format(board[1], board[2], board[3])
     print '|___|___|___|'
-    print '|   |   |   |'    
+    print '|   |   |   |'
     print '| {} | {} | {} |'.format(board[4], board[5], board[6])
     print '|___|___|___|'
-    print '|   |   |   |'    
+    print '|   |   |   |'
     print '| {} | {} | {} |'.format(board[7], board[8], board[9])
     print '|___|___|___|'
 
+
 def check_if_board_full(board):
-    
-    for field in xrange(1,10):
+
+    for field in xrange(1, 10):
         if board[field] == ' ':
             return False
-    return True     
+    return True
 
 
 def place_mark_on_board(board, player_turn, player_position):
@@ -70,17 +70,14 @@ def check_for_winner(board, player_turn, marker):
         print '{} is the winner'.format(player_turn)
 
 while True:
-    
     board = [' '] * 10
     player_turn = 'Player 1'
     player_one_turn = True
     winner = False
 
     while not winner and not check_if_board_full(board):
+        draw_board(board)
         user_input(board)
     else:
-     print 'Game Over!'
-     break
-
-
-    
+        print 'Game Over!'
+        break

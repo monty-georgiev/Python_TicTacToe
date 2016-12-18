@@ -1,5 +1,8 @@
 def user_input(board):
-    # ask for user input
+    '''
+    User is prompted for a position to put his / her mark
+    on the board. Simple check which user's turn it is
+    '''
 
     global player_turn
     global player_one_turn
@@ -15,6 +18,9 @@ def user_input(board):
 
 
 def draw_board(board):
+    '''
+    Clear the screen and draw board's current state
+    '''
     print(chr(27) + "[2J")
 
     print ' ___.___.___'
@@ -30,6 +36,10 @@ def draw_board(board):
 
 
 def check_if_board_full(board):
+    '''
+    If no player won the game in 9 rounds, the game,
+    should be stoped with no winner.
+    '''
 
     for field in xrange(1, 10):
         if board[field] == ' ':
@@ -38,6 +48,11 @@ def check_if_board_full(board):
 
 
 def place_mark_on_board(board, player_turn, player_position):
+    '''
+    Get the user answer and put the mark on the board if place
+    not already reserved. Check what mark should be put X or O
+    After each placement check if there was a winner move.
+    '''
     print '{} placed mark on position: {}'.format(player_turn, player_position)
     marker = 'X'
     global player_one_turn
@@ -55,6 +70,11 @@ def place_mark_on_board(board, player_turn, player_position):
 
 
 def check_for_winner(board, player_turn, marker):
+    '''
+    Check all available winning combinations:
+    Horizontally, vertically and diagonally
+    If there is a winning combination, print the winner.
+    '''
 
     global winner
 
